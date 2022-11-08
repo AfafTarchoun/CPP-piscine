@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:46:12 by atarchou          #+#    #+#             */
-/*   Updated: 2022/11/08 14:10:01 by atarchou         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:50:56 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class PhoneBook
 {
     Contact contact[8];
+    int index;
     public:
-        int index;
         PhoneBook (void);
         ~PhoneBook (void);
 
