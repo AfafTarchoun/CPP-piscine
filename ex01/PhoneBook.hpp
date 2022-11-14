@@ -18,12 +18,20 @@
 
 class PhoneBook
 {
-    Contact contact[8];
     int index;
 
     public:
+        Contact contact[8];
+
         PhoneBook (void);
         ~PhoneBook (void);
+    void add_contact(Contact contact)
+    {
+        std::cout<<"why seg?"<<std::endl;
+        this->contact[this->index] = contact;
+        // _count = (_count < 8) ? _count + 1 : _count;
+        this->index = (this->index + 1) % 8;
+    }
 
 };
 

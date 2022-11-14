@@ -13,37 +13,48 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-// PhoneBook::PhoneBook(void)
-// {
-//     std::cout << "Constructor" << std::endl;
-//     return;
-// }
+PhoneBook::PhoneBook(void)
+{
+    this->index=0;
+    return;
+}
 
-// PhoneBook::~PhoneBook(void)
-// {
-//     std::cout << "Destructor" << std::endl;
-//     return;
-// }
+PhoneBook::~PhoneBook(void)
+{
+    return;
+}
 
-void    add(void)
+void    add_info(PhoneBook phonebook)
 {
     std::string name;
+    Contact contact;
 
     std::cout << "Please, enter your first name: " ;
     std::getline (std::cin,name);
+    contact.set_first(name);
     std::cout << "Please, enter your last name: ";
     std::getline (std::cin,name);
+    contact.set_last(name);
     std::cout << "Please, enter your nickname: ";
     std::getline (std::cin,name);
+    contact.set_nickname(name);
     std::cout << "Please, enter your phone number: ";
     std::getline (std::cin,name);
+    contact.set_nb(name);
     std::cout << "Please, enter your darkest secret: ";
     std::getline (std::cin,name);
+    contact.set_dark(name);
+    phonebook.add_contact(contact);
+}
+
+void   search(PhoneBook book)
+{
+    
 }
 
 int main()
 {
-    //PhoneBook book;
+    PhoneBook book;
     // Contact    contact;
     
     // std::cout << contact.nickname << std::endl;
@@ -52,21 +63,21 @@ int main()
 
     // std::cout << "Please, enter your full name: ";
     // std::getline (std::cin,name);
-    char *input; 
+    std::string input; 
     std::cout << "Please enter :ADD, SEARCH, EXIT" << std::endl;
     while (1)
     {
-        std::cin >> input;
-        if (std::strcmp("ADD",input) == 0)
+        std::getline(std::cin, input);
+        if (input == "ADD")
         {
-            // std::cout<< "lol" << std::endl;
-            add();
+            add_info(book);
         }
-        else if (std::strcmp("SEARCH", input) == 0)
+        else if (input == "SEARCH")
         {
             std::cout<<"ha"<<std::endl;
+            search();
         }
-        else if (std::strcmp("EXIT", input) == 0)
+        else if (input == "EXIT")
             return 0;
     }
     return 0;
