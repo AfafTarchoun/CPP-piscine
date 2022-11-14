@@ -61,7 +61,7 @@ class Contact
             this->dark_scrt=scrt;
         }
 
-    // private:
+    private:
         std::string first_name;
         std::string last_name;
         std::string nickname;

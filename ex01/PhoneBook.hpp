@@ -19,9 +19,8 @@
 class PhoneBook
 {
     int index;
-
+    Contact contact[8];
     public:
-        Contact contact[8];
 
         PhoneBook (void);
         ~PhoneBook (void);
