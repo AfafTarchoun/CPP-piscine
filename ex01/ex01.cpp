@@ -24,7 +24,7 @@ PhoneBook::~PhoneBook(void)
     return;
 }
 
-void    add_info(PhoneBook phonebook)
+void    add_info(PhoneBook *phonebook)
 {
     std::string name;
     Contact contact;
@@ -44,39 +44,43 @@ void    add_info(PhoneBook phonebook)
     std::cout << "Please, enter your darkest secret: ";
     std::getline (std::cin,name);
     contact.set_dark(name);
-    phonebook.add_contact(contact);
+    phonebook->setcont(contact);
 }
 
-void   search(PhoneBook book)
+void   search(PhoneBook *book)
 {
-    
+    Contact contact;
+    int count;
+
+    count = book->counting();
+    if (count == 0)
+        std::cout << "Empty Phonebook: 0 contacts"<< std::endl;
+    else 
+    {
+        std::cout << "|**********|**********|**********|**********|" << std::endl;
+        std::cout << "│" << std::setw(10)  << "index";
+        std::cout << "│" << std::setw(10) << "first name";
+        std::cout << "│" << std::setw(10)  << "last name";
+        std::cout << "│" << std::setw(10)  << "nickname" << "│" << std::endl;
+        std::cout << "|**********|**********|**********|**********|" << std::endl;
+
+    }
+
 }
 
 int main()
 {
     PhoneBook book;
-    // Contact    contact;
-    
-    // std::cout << contact.nickname << std::endl;
-    
-    // std::string name;
 
-    // std::cout << "Please, enter your full name: ";
-    // std::getline (std::cin,name);
     std::string input; 
     std::cout << "Please enter :ADD, SEARCH, EXIT" << std::endl;
     while (1)
     {
         std::getline(std::cin, input);
         if (input == "ADD")
-        {
-            add_info(book);
-        }
+            add_info(&book);
         else if (input == "SEARCH")
-        {
-            std::cout<<"ha"<<std::endl;
-            search();
-        }
+            search(&book);
         else if (input == "EXIT")
             return 0;
     }

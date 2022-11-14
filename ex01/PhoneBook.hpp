@@ -13,25 +13,32 @@
 #ifndef PHONEBOOK
 # define PHONEBOOK
 #include <iostream>
+#include <iomanip> 
 #include <cstring>
 #include "Contact.hpp"
 
 class PhoneBook
 {
     int index;
+    int count = 0;
     Contact contact[8];
     public:
-
         PhoneBook (void);
         ~PhoneBook (void);
-    void add_contact(Contact contact)
+    int counting() const
     {
-        std::cout<<"why seg?"<<std::endl;
-        this->contact[this->index] = contact;
-        // _count = (_count < 8) ? _count + 1 : _count;
-        this->index = (this->index + 1) % 8;
+        return this->count;
     }
-
+    Contact getcont(int index) const
+    {
+        return this->contact[index];
+    }
+    void setcont(Contact contact)
+    {
+        this->contact[this->index] = contact;
+        this->index = (this->index + 1) % 8;
+        this->count++;
+    }
 };
 
 #endif
