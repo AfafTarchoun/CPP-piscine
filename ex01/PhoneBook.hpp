@@ -25,20 +25,20 @@ class PhoneBook
     public:
         PhoneBook (void);
         ~PhoneBook (void);
-    int counting() const
-    {
-        return this->count;
-    }
-    Contact getcont(int index) const
-    {
-        return this->contact[index];
-    }
-    void setcont(Contact contact)
-    {
-        this->contact[this->index] = contact;
-        this->index = (this->index + 1) % 8;
-        this->count++;
-    }
+        int counting() const
+        {
+            return this->count;
+        }
+        Contact getcount(int index) const
+        {
+            return this->contact[index];
+        }
+        void setcont(Contact contact)
+        {
+            this->contact[this->index] = contact;
+            this->index = (this->index + 1) % 8;
+            this->count++;
+        }
 };
 
 #endif
