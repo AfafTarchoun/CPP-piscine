@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 07:51:29 by atarchou          #+#    #+#             */
-/*   Updated: 2022/11/09 17:53:06 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:30:16 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void search(PhoneBook *book)
 		while (!(std::cin >> index) || index > count || index < 1)
 		{
 			std::cin.clear();
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Invalid input. Please enter an index between 1 and " << count << ": ";
 		}
 		index--;
@@ -99,7 +98,6 @@ void search(PhoneBook *book)
 	{
 		std::cout << "Table is empty!" << std::endl;
 	}
-	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 // void   search(PhoneBook *book)
 // {

@@ -1,29 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/16 15:25:11 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/16 15:25:38 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
-class Zombie {
-private:
-    std::string name;
-public:
-    Zombie(std::string name) : name(name) {}
-    ~Zombie() {
-        std::cout << name << " is destroyed" << std::endl;
-    }
-    void announce() {
-        std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
+class Zombie
+{
+    private:
+        std::string name;
+    public:
+        Zombie(std::string name) : name(name) {}
+        ~Zombie()
+        {
+            std::cout << name << " is destroyed" << std::endl;
+        }
+        void announce()
+        {
+            std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+        }
 };
 
-Zombie* zombiesHorde(int N, std::string name) {
+Zombie* zombiesHorde(int N, std::string name)
+{
     Zombie* horde = new Zombie[N];
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         horde[i] = Zombie(name + std::to_string(i));
     }
     return horde;
 }
-int main() {
+
+int main()
+{
     int N = 5;
     Zombie* horde = zombiesHorde(N, "Horde Zombie ");
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         horde[i].announce();
     }
     delete[] horde;
