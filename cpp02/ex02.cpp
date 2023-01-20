@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*   ex02.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 00:21:59 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/20 11:45:37 by atarchou         ###   ########.fr       */
+/*   Created: 2023/01/20 11:47:32 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/20 14:17:54 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <algorithm>
 
 class Fixed {
     private:
@@ -24,10 +26,28 @@ class Fixed {
         Fixed(const Fixed &other);
         ~Fixed();
         Fixed &operator=(const Fixed &other);
+        Fixed &operator++();
+        Fixed operator++(int);
+        Fixed &operator--();
+        Fixed operator--(int);
+        bool operator==(const Fixed &other) const;
+        bool operator!=(const Fixed &other) const;
+        bool operator<(const Fixed &other) const;
+        bool operator>(const Fixed &other) const;
+        bool operator<=(const Fixed &other) const;
+        bool operator>=(const Fixed &other) const;
+        Fixed operator+(const Fixed &other) const;
+        Fixed operator-(const Fixed &other) const;
+        Fixed operator*(const Fixed &other) const;
+        Fixed operator/(const Fixed &other) const;
         float toFloat() const;
         int toInt() const;
         int getRawBits() const;
         void setRawBits(int const raw);
+        static Fixed &max(Fixed &a, Fixed &b);
+        static const Fixed &max(const Fixed &a, const Fixed &b);
+        static Fixed &min(Fixed &a, Fixed &b);
+        static const Fixed &min(const Fixed &a, const Fixed &b);
 };
 
 Fixed::Fixed() : _rawValue(0) {
@@ -41,7 +61,7 @@ Fixed::Fixed(const int value) {
 
 Fixed::Fixed(const float value) {
     std::cout << "Float constructor called" << std::endl;
-    _rawValue = (int)(value * (1 << _fractionalBits));
+    _rawValue = roundf(value * (1 << _fractionalBits));
 }
 
 Fixed::Fixed(const Fixed &other) {
@@ -59,33 +79,28 @@ Fixed &Fixed::operator=(const Fixed &other) {
     return *this;
 }
 
-float Fixed::toFloat() const {
-    return (float)_rawValue / (1 << _fractionalBits);
+Fixed &Fixed::operator++() {
+    _rawValue++;
+    return *this;
 }
 
-int Fixed::toInt() const {
-    return _rawValue >> _fractionalBits;
+Fixed Fixed::operator++(int) {
+    Fixed tmp(*this);
+    operator++();
+    return tmp;
 }
 
-int Fixed::getRawBits() const {
-    std::cout << "getRawBits member function called" << std::endl;
-    return _rawValue;
+Fixed &Fixed::operator--() {
+    _rawValue--;
+    return *this;
 }
 
-void Fixed::setRawBits(int const raw) {
-    std::cout << "setRawBits member function called" << std::endl;
-    _rawValue = raw;
+Fixed Fixed::operator--(int) {
+    Fixed tmp(*this);
+    operator--();
+    return tmp;
 }
 
-std::ostream &operator<<(std::ostream &os, const Fixed &f) {
-    os << f.toFloat();
-    return os;
+bool Fixed::operator==(const Fixed &other) const {
+    return _rawValue == other._rawValue;
 }
-
-/*In this example, the constructors that take an integer or a floating-point number as a parameter convert the value
-to the corresponding fixed-point representation by left-shifting the integer value
-or multiplying the floating-point value by 1 << _fractionalBits respectively.
-The toFloat() member function converts the fixed-point value back to a floating-point value by dividing by 1 << _fractionalBits,
-and the toInt() member function converts the fixed-point value to an integer by right-shifting _fractionalBits places.
-The operator<< overloads the insertion operator allowing us to print the float value of the fixed point number.
-Also, It is worth noting that this class does not handle the rounding or overflow errors that might occur during operations or conversions.*/
