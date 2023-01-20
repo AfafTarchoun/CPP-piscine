@@ -1,14 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex06.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 15:25:04 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/16 15:30:55 by atarchou         ###   ########.fr       */
+/*   Created: 2023/01/17 21:37:27 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/17 23:23:33 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
+#include "Zombie.hpp"
+
+Zombie* newZombie(std::string name)
+{
+    return Zombie(name);
+}
