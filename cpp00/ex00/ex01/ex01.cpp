@@ -99,26 +99,6 @@ void search(PhoneBook *book)
 		std::cout << "Table is empty!" << std::endl;
 	}
 }
-// void   search(PhoneBook *book)
-// {
-//     Contact contact;
-//     int count;
-
-//     count = book->counting();
-//     if (count == 0)
-//         std::cout << "Empty Phonebook: 0 contacts"<< std::endl;
-//     else 
-//     {
-//         std::cout << "|**********|**********|**********|**********|" << std::endl;
-//         std::cout << "│" << std::setw(10)  << "index";
-//         std::cout << "│" << std::setw(10) << "first name";
-//         std::cout << "│" << std::setw(10)  << "last name";
-//         std::cout << "│" << std::setw(10)  << "nickname" << "│" << std::endl;
-//         std::cout << "|**********|**********|**********|**********|" << std::endl;
-
-//     }
-
-// }
 
 int main()
 {
