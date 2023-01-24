@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 21:37:27 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/17 23:23:33 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/01/24 02:59:00 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 Zombie* newZombie(std::string name)
 {
-    return Zombie(name);
+    return (new Zombie(name));
 }

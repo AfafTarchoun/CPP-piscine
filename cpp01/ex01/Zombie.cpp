@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    randomChump.cpp                                   :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 21:37:48 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/17 23:24:01 by atarchou         ###   ########.fr       */
+/*   Created: 2023/01/24 03:18:29 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/24 03:20:36 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void randomChump(std::string name)
+void announce(Zombie &zombie)
 {
-    Zombie zombie(name);
-    zombie.announce();
+    std::cout << zombie.getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

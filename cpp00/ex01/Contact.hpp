@@ -6,12 +6,12 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 07:51:26 by atarchou          #+#    #+#             */
-/*   Updated: 2022/11/09 17:25:51 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:16:29 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT
-# define CONTACT
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 #include <iostream>
 #include <cstring>
 
@@ -68,6 +68,4 @@ class Contact
         std::string phone_nb;
         std::string dark_scrt;
 };
-
-
 #endif

@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:48:56 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/17 23:35:57 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:10:05 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 int main()
 {
     Zombie* heapZombies = newZombie("Heap Zombie");
-    heapZombies->announce();
+    announce(*heapZombies);
     randomChump("Stack Zombie");
     return 0;
 }
+
 /*The purpose of the exercise is to learn about memory allocation in C++,
  specifically the difference between allocating an object on the stack and on the heap. 
  The Zombie class has been implemented with a private attribute name and a member function announce() 

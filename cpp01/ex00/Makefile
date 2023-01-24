@@ -1,5 +1,5 @@
-NAME = megaphone
-SRCS = megaphone.cpp
+NAME = Zombie
+SRCS = randomChump.cpp Zombie.cpp newZombie.cpp main.cpp 
 CC = c++
 FLAGS = -Wall -Werror -Wextra
 

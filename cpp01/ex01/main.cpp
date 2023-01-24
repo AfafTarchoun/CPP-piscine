@@ -1,42 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:25:11 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/16 15:25:38 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:34:01 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-
-class Zombie
-{
-    private:
-        std::string name;
-    public:
-        Zombie(std::string name) : name(name) {}
-        ~Zombie()
-        {
-            std::cout << name << " is destroyed" << std::endl;
-        }
-        void announce()
-        {
-            std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-        }
-};
-
-Zombie* zombiesHorde(int N, std::string name)
-{
-    Zombie* horde = new Zombie[N];
-    for (int i = 0; i < N; i++)
-    {
-        horde[i] = Zombie(name + std::to_string(i));
-    }
-    return horde;
-}
+#include "Zombie.hpp"
 
 int main()
 {
@@ -44,7 +18,7 @@ int main()
     Zombie* horde = zombiesHorde(N, "Horde Zombie ");
     for (int i = 0; i < N; i++)
     {
-        horde[i].announce();
+        announce(horde[i]);
     }
     delete[] horde;
     return 0;

@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ex00.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/24 00:33:24 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/24 00:33:24 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 /*creating the base class Animal.
 In this class, we'll have a protected attribute _type which will be a string representing the type of animal,
 and a public method makeSound() which will be pure virtual (i.e., it will be left unimplemented in the base class,
