@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 21:41:53 by atarchou          #+#    #+#             */
+/*   Updated: 2023/01/27 21:41:53 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "span.hpp"
 /*In the constructor, I would initialize the max_size variable with the value of N, and initialize the count to 0.
 
