@@ -36,13 +36,6 @@ void    add_info(PhoneBook *phonebook)
     phonebook->setcont(contact);
 }
 
-std::string truncate(std::string str, int width)
-{
-    if (str.size() > width)
-        return (str.substr(0, width-1) + ".");
-    return (str);
-}
-
 int main()
 {
     PhoneBook book;
@@ -60,10 +53,16 @@ int main()
             int index;
             std::cout << "Enter index of contact to display: ";
             std::cin >> index;
-            book.search_contact(index);
+            if (!isdigit(index))
+            {
+                std::cout << "Invalid index!" << std::endl;
+                continue;
+            }
+            else
+                book.search_contact(index);
 		}
         else if (input == "EXIT")
-            return 0;
+            exit (1);
         else
 			std::cout << "Invalid choice!" << std::endl;
     }
