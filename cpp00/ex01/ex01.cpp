@@ -39,8 +39,8 @@ void    add_info(PhoneBook *phonebook)
 int main()
 {
     PhoneBook book;
+    std::string input;
 
-    std::string input; 
     std::cout << "Please enter :ADD, SEARCH, EXIT" << std::endl;
     while (1)
     {
@@ -53,10 +53,10 @@ int main()
             int index;
             std::cout << "Enter index of contact to display: ";
             std::cin >> index;
-            if (!isdigit(index))
+            if (!isdigit(index) || index < 1)
             {
                 std::cout << "Invalid index!" << std::endl;
-                continue;
+                // continue;
             }
             else
                 book.search_contact(index);
