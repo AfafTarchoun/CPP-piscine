@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/04 22:00:53 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/04 22:00:55 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 std::string truncate(std::string str)
@@ -24,7 +36,7 @@ void PhoneBook::setcont(Contact contact)
 
 void PhoneBook::search_contact(int index)
 {
-    if (index >= 1 && index <= this->current_index)
+    if ((index >= 1 && index <= this->current_index))
     {
         Contact contact = this->contacts[index-1];
         std::cout << "First Name: " << contact.get_first() << std::endl;
@@ -39,7 +51,7 @@ void PhoneBook::search_contact(int index)
 
 void PhoneBook::display_contacts()
 {
-    std::cout << " Index | First Name | Last Name | Nickname" << std::endl;
+    std::cout << "     Index | First Name | Last Name | Nickname" << std::endl;
     for (int i = 0; i < this->current_index; i++)
     {
         std::cout << std::right << std::setw(10) << i+1 << " | ";

@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 07:51:29 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/24 02:37:44 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/05 00:28:08 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,8 @@ int main()
             int index;
             std::cout << "Enter index of contact to display: ";
             std::cin >> index;
-            if (!isdigit(index) || index < 1)
-            {
-                std::cout << "Invalid index!" << std::endl;
-                // continue;
-            }
-            else
-                book.search_contact(index);
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            book.search_contact(index);
 		}
         else if (input == "EXIT")
             exit (1);
