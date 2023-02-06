@@ -12,18 +12,27 @@
 
 #include "HumanB.hpp"
 
-void setWeapon(Weapon w)
+HumanB::HumanB(std::string n) {this->name = n;}
+
+void    HumanB::setName(std::string Name)
 {
-    Weapon* weapon;
-    
-    if (weapon != nullptr)
-        delete weapon;
-    weapon = new Weapon(w);
+    this->name = Name;
 }
-// void attack(Weapon* weapon, HumanB &hb)
-// {
-//     if (weapon != nullptr)
-//         std::cout << hb.getName() << " attacks with their " << weapon->getType() << std::endl;
-//     else
-//         std::cout << hb.getName() << " has no weapon to attack with" << std::endl;
-// }
+
+std::string HumanB::getName(void)
+{
+    return this->name;
+}
+
+void HumanB::setWeapon(Weapon &w)
+{
+    this->weapon = &w;
+}
+
+void HumanB::attack()
+{
+    if (weapon)
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    else
+        std::cout << name << " has no weapon to attack with" << std::endl;
+}

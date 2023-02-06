@@ -12,7 +12,22 @@
 
 #include "Zombie.hpp"
 
-void announce(Zombie &zombie)
+Zombie::Zombie(std::string name) : name(name) {}
+
+Zombie::Zombie() : name("Unnamed Zombie") {}
+
+void    Zombie::setName(std::string name)
 {
-    std::cout << zombie.getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << name << "is created\n";
+    this->name = name;
+}
+
+Zombie::~Zombie()
+{
+    std::cout << name << " is destroyed" << std::endl;
+}
+
+void Zombie::announce()
+{
+    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

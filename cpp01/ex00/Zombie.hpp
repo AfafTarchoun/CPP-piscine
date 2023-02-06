@@ -14,19 +14,16 @@
 # define ZOMBIE_HPP
 #include <iostream>
 
-class Zombie
-{
-    private:
-        std::string name;
-    public:
-        Zombie(std::string name) : name(name) {}
-        std::string getName() const { return name; }
-        ~Zombie()
-        {
-            std::cout << name << " is destroyed" << std::endl;
-        }
+class Zombie {
+private:
+    std::string name;
+
+public:
+    Zombie(std::string name);
+    ~Zombie();
+    void announce();
 };
-void announce(Zombie &zombie);
+
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 #endif

@@ -20,16 +20,10 @@ class HumanB
         Weapon* weapon;
         std::string name;
     public:
-        HumanB(std::string n) : name(n), weapon(nullptr) {}
-        ~HumanB() {delete weapon;}
-        void setWeapon(Weapon w);
-        std::string getName() const { return name; }
-        void attack()
-        {
-            if (weapon != nullptr)
-                std::cout << name << " attacks with their " << weapon->getType() << std::endl;
-            else
-                std::cout << name << " has no weapon to attack with" << std::endl;
-        }
+        HumanB(std::string n);
+        void setWeapon(Weapon &w);
+        std::string getName();
+        void        setName(std::string Name);
+        void attack();
 };
 #endif

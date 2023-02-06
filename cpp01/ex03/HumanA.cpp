@@ -10,3 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "HumanA.hpp"
+
+std::string HumanA::getName(void)
+{
+    return (this->name);
+}
+
+void    HumanA::setName(std::string Name)
+{
+    this->name = Name;
+}
+
+HumanA::HumanA(std::string n, Weapon &W) :
+    weapon(W)
+{
+    this->name = n;
+}
+
+void HumanA::attack()
+{
+    std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+}

@@ -19,12 +19,11 @@ class Weapon
 {
     private:
         std::string type;
-        bool is_null;
     public:
-        Weapon(std::string t);
-        const std::string& getType() const {return type;}
-        void setType(std::string t) {type = t;}
-        bool isNull() const {return is_null;}
+        Weapon();
+        Weapon(std::string type);
+        std::string getType();
+        void setType(std::string type);
 };
 
 #endif

@@ -19,14 +19,11 @@ class Zombie
     private:
         std::string name;
     public:
-        Zombie(std::string name) : name(name) {}
-        Zombie() : name("Unnamed Zombie") {}
-        std::string getName() const { return name; }
-        ~Zombie()
-        {
-            std::cout << name << " is destroyed" << std::endl;
-        }
+        Zombie(std::string name);
+        Zombie();
+        ~Zombie();
+        void    setName(std::string name);
+        void announce();
 };
-void announce(Zombie &zombie);
 Zombie* zombiesHorde(int N, std::string name);
 #endif

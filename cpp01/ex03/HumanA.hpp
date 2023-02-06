@@ -17,14 +17,13 @@
 class HumanA
 {
     private:
-        Weapon weapon;
+        Weapon &weapon;
         std::string name;
     public:
-        HumanA(std::string n, Weapon w) : name(n), weapon(w) {}
-        void attack()
-        {
-            std::cout << name << " attacks with their " << weapon.getType() << std::endl;
-        }
+        HumanA(std::string n, Weapon &weapon);
+        std::string getName(void);
+        void        setName(std::string Name);
+        void attack();
 };
 
 #endif
