@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 07:13:11 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/08 07:17:19 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
 #include "Fixed.hpp"
@@ -57,7 +68,8 @@ int Fixed::toInt() const
 //     _rawValue = raw;
 // }
 
-std::ostream &operator<<(std::ostream &op, const Fixed &f) {
+std::ostream &operator<<(std::ostream &op, const Fixed &f)
+{
     op << f.toFloat();
     return op;
 }

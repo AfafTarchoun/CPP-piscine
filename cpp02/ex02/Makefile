@@ -1,7 +1,7 @@
 NAME = Fixed
 SRCS = Fixed.cpp main.cpp 
 CC = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)

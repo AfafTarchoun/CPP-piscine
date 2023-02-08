@@ -1,7 +1,7 @@
-NAME = Fixed
-SRCS = Fixed.cpp main.cpp 
+NAME = ScavTrap
+SRCS = ClapTrap.cpp ScavTrap.cpp main.cpp 
 CC = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)

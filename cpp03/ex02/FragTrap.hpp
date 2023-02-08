@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 15:32:41 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:13:08 by atarchou         ###   ########.fr       */
+/*   Created: 2023/02/08 10:05:57 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/08 10:10:09 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-int main( void )
+#include "ClapTrap.hpp"
+#include <iostream>
+
+class FragTrap : public ClapTrap
 {
-    Fixed a;
-    Fixed b( a );
-    Fixed c;
-    c = b;
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-    return 0;
-}
+    public:
+        FragTrap(std::string name);
+        FragTrap(const FragTrap& other);
+        FragTrap& operator=(const FragTrap& other);
+        ~FragTrap();
+        void attack(const std::string& target);
+        void highFivesGuys();
+};
+#endif

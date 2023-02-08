@@ -1,7 +1,7 @@
-NAME = Fixed
-SRCS = Fixed.cpp main.cpp 
+NAME = Animals
+SRCS = Animal.cpp Cat.cpp Dog.cpp main.cpp 
 CC = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)

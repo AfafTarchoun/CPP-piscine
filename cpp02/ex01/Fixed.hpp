@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 07:13:15 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/08 07:18:14 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
 #ifndef FIXED_HPP
@@ -18,11 +29,9 @@ class Fixed {
         ~Fixed();
         Fixed &operator=(const Fixed &other);
         float toFloat() const;
-        int toInt() const;
-        // int getRawBits() const;
-        // void setRawBits(int const raw);
+        int   toInt() const;
 };
-std::ostream &operator<<(std::ostream& op, const Fixed& f);
 
+std::ostream &operator<<(std::ostream& op, const Fixed& f);
 
 #endif
