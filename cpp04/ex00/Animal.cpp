@@ -15,21 +15,29 @@
 Animals::Animals(const std::string& name) : _name(name)
 {
     _type = "Animal";
+    std::cout << _name << " Animal constructor called" << std::endl;
 }
 
-Animals::Animals(const Animals& other) = default;
+Animals::Animals(const Animals& other)
+{
+    _type = other._type;
+}
 
-Animals& Animals::operator=(const Animals& other) = default;
+Animals& Animals::operator=(const Animals& other)
+{
+    if (this != &other)
+      _type = other._type;
+    return *this;
+}
 
-Animals::Animals(Animals&& other) = default;
-
-Animals& Animals::operator=(Animals&& other) = default;
-
-Animals::~Animals() = default;
+Animals::~Animals()
+{
+    std::cout << _name <<" Animal destructor called" << std::endl;
+}
 
 void Animals::makeSound() const
 {
-    std::cout << "Animals sound!" << std::endl;
+    std::cout << _name << " Animals sound!" << std::endl;
 }
 std::string Animals::getType() const
 {
@@ -44,19 +52,24 @@ std::string Animals::getName() const
 WrongAnimals::WrongAnimals(const std::string& name): Animals(name)
 {
     _type = "WrongAnimals";
+    std::cout << _name << " Wrong animal constructor" << std::endl;
 }
 
-WrongAnimals::WrongAnimals(const WrongAnimals& other) = default;
+WrongAnimals::WrongAnimals(const WrongAnimals& other) : Animals(other._type) {}
 
-WrongAnimals& WrongAnimals::operator=(const WrongAnimals& other) = default;
+WrongAnimals& WrongAnimals::operator=(const WrongAnimals& other)
+{
+  if (this != &other)
+    _type = other._type;
+  return *this;
+}
 
-WrongAnimals::WrongAnimals(WrongAnimals&& other) = default;
-
-WrongAnimals& WrongAnimals::operator=(WrongAnimals&& other) = default;
-
-WrongAnimals::~WrongAnimals() = default;
+WrongAnimals::~WrongAnimals()
+{
+    std::cout << _name << " Wrong animal destructor" << std::endl;
+}
 
 void WrongAnimals::makeSound() const
 {
-    std::cout << "Wrong Animals sound!" << std::endl;
+    std::cout <<_name << " Wrong Animals sound!" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:32:53 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:20:35 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:24:27 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int main()
     FragTrap.takeDamage(5);
     FragTrap.beRepaired(10);
     FragTrap.highFivesGuys();
-
     return 0;
 }

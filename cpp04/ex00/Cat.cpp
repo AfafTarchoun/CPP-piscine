@@ -15,21 +15,26 @@
 Cat::Cat(const std::string& name) : Animals(name)
 {
    this->_type = "Cat";
+    std::cout <<_name << " Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) = default;
+Cat::Cat(const Cat& other) :Animals(other){}
 
-Cat& Cat::operator=(const Cat& other) = default;
+Cat& Cat::operator=(const Cat& other)
+{
+    if (this != &other)
+      Animals::operator=(other);
+    return *this;
+}
 
-Cat::Cat(Cat&& other) = default;
-
-Cat& Cat::operator=(Cat& other);
-
-Cat::~Cat() = default;
+Cat::~Cat()
+{
+    std::cout <<_name << " Cat destructor called" << std::endl;
+}
 
 void Cat::makeSound() const
 {
-    std::cout << "Cat sound!" << std::endl;
+    std::cout <<_name << " Cat sound!" << std::endl;
 }
 
 //Wrong cat methodes
@@ -37,19 +42,24 @@ void Cat::makeSound() const
 WrongCat::WrongCat(const std::string& name): WrongAnimals(name)
 {
     _type= "WrongCat";
+    std::cout <<_name << " Wrong cat constructor" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& other) = default;
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimals(other) {}
 
-WrongCat& WrongCat::operator=(const WrongCat& other) = default;
+WrongCat& WrongCat::operator=(const WrongCat& other)
+{
+  if (this != &other)
+    WrongAnimals::operator=(other);
+  return *this;
+}
 
-WrongCat::WrongCat(WrongCat&& other) = default;
-
-WrongCat& WrongCat::operator=(WrongCat&& other) = default;
-
-WrongCat::~WrongCat() = default;
+WrongCat::~WrongCat()
+{
+    std::cout <<_name << " Wrong cat destructor" << std::endl;
+}
 
 void WrongCat::makeSound() const
 {
-std::cout << "Wrong Cat sound!" << std::endl;
+    std::cout <<_name << " Wrong Cat sound!" << std::endl;
 }

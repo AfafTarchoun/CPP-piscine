@@ -15,19 +15,25 @@
 Dog::Dog(const std::string& name) : Animals(name)
 {
     _type = "Dog";
+    std::cout <<_name << " Dog constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& other) = default;
+Dog::Dog(const Dog& other) :Animals(other)
+{}
 
-Dog& Dog::operator=(const Dog& other) = default;
+Dog& Dog::operator=(const Dog& other)
+{
+    if (this != &other)
+      Animals::operator=(other);
+    return *this;
+}
 
-Dog::Dog(Dog&& other) = default;
-
-Dog& Dog::operator=(Dog&& other) = default;
-
-Dog::~Dog() = default;
+Dog::~Dog()
+{
+    std::cout <<_name << " Dog destructor called" << std::endl;
+}
 
 void Dog::makeSound() const
 {
-    std::cout << "Dog sound!" << std::endl;
+    std::cout <<_name << " Dog sound!" << std::endl;
 }
