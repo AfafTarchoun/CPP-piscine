@@ -14,6 +14,7 @@
 #define ANIMAL_HPP
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
 
 class Animal
 {
@@ -22,9 +23,9 @@ class Animal
         Animal(std::string _type);
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
-        ~Animal();
+        virtual ~Animal();
         virtual void makeSound() const;
-        void    setType(std::string tt);
+        void    setType(std::string a);
         std::string getType() const;
     protected:
         std::string _type;
@@ -32,30 +33,34 @@ class Animal
 
 class Dog : public Animal
 {
+    private:
+        Brain *B;
     public:
         Dog();
         Dog(std::string name);
         Dog(const Dog& other);
         Dog& operator=(const Dog& other);
         ~Dog();
+        void getIdeas();
         void makeSound() const;
 };
 
 class Cat : public Animal
 {
+    private:
+        Brain *B;
     public:
         Cat();
         Cat(std::string name);
         Cat(const Cat& other);
         Cat& operator=(const Cat& other);
         ~Cat();
+        void getIdeas();
         void makeSound() const;
 };
 
-class WrongAnimal
+class WrongAnimal : public Animal
 {
-    protected :
-        std::string type;
     public:
         WrongAnimal();
         WrongAnimal(std::string type);
@@ -64,18 +69,7 @@ class WrongAnimal
         ~WrongAnimal();
         void    setType(std::string type);
         std::string getType(void) const ;
-        void makeSound() const;
-};
-
-class WrongCat : public WrongAnimal
-{
-    public:
-        WrongCat();
-        WrongCat(std::string name);
-        WrongCat(const WrongCat& other);
-        WrongCat& operator=(const WrongCat& other);
-        ~WrongCat();
-        void makeSound() const;
+        virtual void makeSound() const;
 };
 
 #endif

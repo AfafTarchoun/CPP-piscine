@@ -11,34 +11,52 @@
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 Dog::Dog()
 {
+    B = new Brain();
     std::cout << "Dog Default constructor Called\n";
 }
 
 Dog::Dog(std::string name) : Animal(name)
 {
+    B = new Brain();
     std::cout <<" Dog parameterized constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
 {
-    *this = other;
+    this->B = new Brain();
+    *B = *other.B;
 }
 
 Dog& Dog::operator=(const Dog& other)
 {
+    if (this->B)
+    {
+        delete this->B;
+        this->B = new Brain();
+    }
+    for (int i = 0; i < 100; i++)
+        this->B->setIdeas(other.B->getIdeas(i), i);
     this->_type = other._type;
     return *this;
 }
 
 Dog::~Dog()
 {
+    delete B;
     std::cout <<" Dog destructor called" << std::endl;
 }
 
 void Dog::makeSound() const
 {
-    std::cout << " Dog sound!" << std::endl;
+    std::cout << " Miaw!" << std::endl;
+}
+
+void    Dog::getIdeas(void)
+{
+    for(int i = 0; i < 100; i++)
+        std::cout << B->getIdeas(i) << std::endl; 
 }

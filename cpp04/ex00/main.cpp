@@ -15,25 +15,18 @@
 
 int main()
 {
-    const Animals* meta = new Animals("meta");
-    const Animals* j = new Dog("j");
-    const Animals* i = new Cat("i");
-    std::cout << j->getType() << " " << j->getName() << std::endl;
-    std::cout << i->getType() << " " << i->getName() << std::endl;
+    const Animal* meta = new Animal("meta");
+    const Animal* j = new Dog("j");
+    const Animal* i = new Cat("i");
+    std::cout << j->getType() << " "<< std::endl;
+    std::cout << i->getType() << " "<< std::endl;
     i->makeSound();
     j->makeSound();
     meta->makeSound();
-    const Animals* wmeta = new WrongAnimals("wmeta");
-    const Animals* wi = new WrongCat("wi");
-    std::cout << wi->getType() << " " << wi->getName() << std::endl;
-    wi->makeSound();
-    wmeta->makeSound();
     
-    delete meta;
-    delete j;
-    delete i;
-    delete wmeta;
-    delete wi;
+    // delete meta;
+    // delete j;
+    // delete i;
     return 0;
 }
 /*n this code, I have created a base class `Animals` which has a protected attribute `_type` and a public attribute `_name`.

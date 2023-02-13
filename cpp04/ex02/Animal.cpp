@@ -56,37 +56,25 @@ std::string Animal::getType() const
 }
 
 //Wrong Animals methodes
-WrongAnimal::WrongAnimal()
+WrongAnimal::WrongAnimal() : Animal()
 {
-    type = "WrongAnimal";
     std::cout << "WrongAnimal Constructor Called\n";
 }
 
-WrongAnimal::WrongAnimal(std::string type)
+WrongAnimal::WrongAnimal(std::string type) : Animal(type)
 {
-    setType(type);
     std::cout << "WrongAnimal paramitrized Constructor Called\n";
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& other)
+WrongAnimal::WrongAnimal(const WrongAnimal& other) :Animal(other)
 {
     *this = other;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
-    this->type = other.type;
+    this->_type = other._type;
     return *this;
-}
-
-void WrongAnimal::setType(std::string type) 
-{
-    this->type = type;
-}
-
-std::string WrongAnimal::getType(void) const 
-{
-    return (type);
 }
 
 WrongAnimal::~WrongAnimal()
