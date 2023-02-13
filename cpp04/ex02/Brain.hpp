@@ -1,7 +1,8 @@
 
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
-#include "Animal.hpp"
+#include <iostream>
+#include <string>
 
 class Brain
 {
@@ -15,7 +16,6 @@ class Brain
         ~Brain();
         std::string    getIdeas(int n) const ;
         void            setIdeas(std::string idea, int n);
-        
 };
 
  #endif

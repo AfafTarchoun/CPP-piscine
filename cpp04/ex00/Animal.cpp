@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:23:58 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:32:51 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:25:27 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Animal::Animal()
 {
     _type = "Animal";
-    std::cout << " Animal constructor called" << std::endl;
+    std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::Animal(std::string type)
@@ -37,7 +37,7 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::~Animal()
 {
-    std::cout <<" Animal destructor called" << std::endl;
+    std::cout <<"Animal destructor called" << std::endl;
 }
 
 void Animal::setType(std::string a) 
@@ -47,7 +47,7 @@ void Animal::setType(std::string a)
 
 void Animal::makeSound() const
 {
-    std::cout << " Animals sound!" << std::endl;
+    std::cout << "Animals sound!" << std::endl;
 }
 
 std::string Animal::getType() const
@@ -91,10 +91,10 @@ std::string WrongAnimal::getType(void) const
 
 WrongAnimal::~WrongAnimal()
 {
-    std::cout << " Wrong animal destructor" << std::endl;
+    std::cout << "Wrong animal destructor" << std::endl;
 }
 
 void WrongAnimal::makeSound() const
 {
-    std::cout <<" Wrong Animals sound!" << std::endl;
+    std::cout <<"definitley not an animal sound" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:26:38 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:40:32 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:24:02 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 Cat::Cat()
 {
+    _type = "Cat";
     std::cout << "Cat Default constructor Called\n";
 }
 
 Cat::Cat(std::string name) : Animal(name)
 {
-    std::cout << " Cat parameterized constructor called" << std::endl;
+    std::cout << "Cat parameterized constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat& other) :Animal(other)
@@ -35,12 +36,12 @@ Cat& Cat::operator=(const Cat& other)
 
 Cat::~Cat()
 {
-    std::cout << " Cat destructor called" << std::endl;
+    std::cout << "Cat destructor called" << std::endl;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << " Cat sound!" << std::endl;
+    std::cout << "meaw meaw" << std::endl;
 }
 
 //Wrong cat methodes
@@ -52,7 +53,7 @@ WrongCat::WrongCat()
 
 WrongCat::WrongCat(std::string name): WrongAnimal(name)
 {
-    std::cout << " Wrong cat parameterized constructor" << std::endl;
+    std::cout << "Wrong cat parameterized constructor" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& other) :WrongAnimal(other)
@@ -68,10 +69,10 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
 
 WrongCat::~WrongCat()
 {
-    std::cout <<" Wrong cat destructor" << std::endl;
+    std::cout <<"Wrong cat destructor" << std::endl;
 }
 
 void WrongCat::makeSound() const
 {
-    std::cout << " Wrong Cat sound!" << std::endl;
+    std::cout << "definitely not meaw" << std::endl;
 }

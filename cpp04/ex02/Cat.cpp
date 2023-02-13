@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:26:38 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:40:32 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:42:22 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 Cat::Cat()
 {
     B = new Brain();
+    _type = "Cat";
     std::cout << "Cat Default constructor Called\n";
 }
 
 Cat::Cat(std::string name) : Animal(name)
 {
     B = new Brain();
-    std::cout << " Cat parameterized constructor called" << std::endl;
+    std::cout << "Cat parameterized constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat& other) :Animal(other)
@@ -46,12 +47,12 @@ Cat& Cat::operator=(const Cat& other)
 Cat::~Cat()
 {
     delete B;
-    std::cout << " Cat destructor called" << std::endl;
+    std::cout << "Cat destructor called" << std::endl;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << " Cat sound!" << std::endl;
+    std::cout << "meaw meaw" << std::endl;
 }
 
 void    Cat::getIdeas(void)

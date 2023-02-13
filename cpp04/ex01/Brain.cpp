@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 18:28:07 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/13 18:28:08 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Brain.hpp"
 #include "Animal.hpp"
+
 Brain::Brain()
 {
     for(int i = 0; i < 100; i++)
@@ -26,7 +38,6 @@ Brain & Brain::operator=(Brain const & B)
 	{
         this->ideas[i] = B.ideas[i];
 	}
-    std::cout << "Brain copy Assigement Overload Called\n";
     return (*this);
 }
 

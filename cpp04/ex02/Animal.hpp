@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:20 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:35:57 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:15:25 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Animal
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
         virtual ~Animal();
-        virtual void makeSound() const;
+        virtual void makeSound() const = 0;
         void    setType(std::string a);
         std::string getType() const;
     protected:

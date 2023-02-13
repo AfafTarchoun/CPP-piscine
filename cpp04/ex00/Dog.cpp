@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:26:52 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:27:59 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:24:04 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 Dog::Dog()
 {
+    _type = "Dog";
     std::cout << "Dog Default constructor Called\n";
 }
 
 Dog::Dog(std::string name) : Animal(name)
 {
-    std::cout <<" Dog parameterized constructor called" << std::endl;
+    std::cout <<"Dog parameterized constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
@@ -35,10 +36,10 @@ Dog& Dog::operator=(const Dog& other)
 
 Dog::~Dog()
 {
-    std::cout <<" Dog destructor called" << std::endl;
+    std::cout <<"Dog destructor called" << std::endl;
 }
 
 void Dog::makeSound() const
 {
-    std::cout << " Dog sound!" << std::endl;
+    std::cout << "woof woof" << std::endl;
 }

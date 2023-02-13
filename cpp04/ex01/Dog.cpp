@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:26:52 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:27:59 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:35:41 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 Dog::Dog()
 {
     B = new Brain();
-    std::cout << "Dog Default constructor Called\n";
+    _type = "Dog";
+    std::cout << "Dog Default constructor" << std::endl;
 }
 
 Dog::Dog(std::string name) : Animal(name)
 {
     B = new Brain();
-    std::cout <<" Dog parameterized constructor called" << std::endl;
+    std::cout <<"Dog parameterized constructor" << std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
@@ -47,12 +48,12 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
     delete B;
-    std::cout <<" Dog destructor called" << std::endl;
+    std::cout <<"Dog destructor" << std::endl;
 }
 
 void Dog::makeSound() const
 {
-    std::cout << " Miaw!" << std::endl;
+    std::cout << "woof woof" << std::endl;
 }
 
 void    Dog::getIdeas(void)

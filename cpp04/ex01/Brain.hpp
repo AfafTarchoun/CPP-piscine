@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 18:28:17 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/13 18:29:37 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
-#include "Animal.hpp"
+#include <iostream>
+#include<string>
 
 class Brain
 {
@@ -15,7 +27,6 @@ class Brain
         ~Brain();
         std::string    getIdeas(int n) const ;
         void            setIdeas(std::string idea, int n);
-        
 };
 
  #endif
