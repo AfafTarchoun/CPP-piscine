@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "form.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Bureaucrat")
@@ -65,4 +66,18 @@ int Bureaucrat::getGrade() const { return this->grade; }
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
     os << b.getName() << ", bureaucrat grade " << b.getGrade();
     return os;
+}
+
+void   Bureaucrat::signForm(Form & F)
+{
+   try
+   {
+        F.beSigned(*this);
+        std::cout << this->name << " Signed " << F.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+   {
+        std::cerr << this->name << "Couldn't Sign due to ";
+        std::cerr << e.what() << '\n';
+   }    
 }

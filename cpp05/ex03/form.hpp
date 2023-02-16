@@ -22,6 +22,7 @@ class Form
         int getGradeToSign();
         int getGradeToExecute();
         void beSigned(Bureaucrat b);
+        void        execute(Bureaucrat const & executor) const ;
         class   GradeTooHighException : public std::exception
         {
             public :

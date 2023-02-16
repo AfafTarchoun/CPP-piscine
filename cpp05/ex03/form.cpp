@@ -70,3 +70,15 @@ std::string Form::getName(void)
 {
     return (this->name);
 }
+
+void    Form::execute(Bureaucrat const & executor) const 
+{
+    if(executor.getGrade() < 1)
+        throw(GradeTooHighException());
+    else if(executor.getGrade() > 150)
+        throw(GradeTooLowException());
+    if (is_signed)
+        std::cout << "Form : " << this->name << " executed " << executor.getName() << '\n';
+    else
+        std::cout << "Form : The form is not signed\n";
+}

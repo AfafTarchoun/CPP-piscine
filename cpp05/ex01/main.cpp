@@ -11,35 +11,19 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// int main()
-// {
-//     try {
-//         Bureaucrat b("John", 0);
-//     }
-//     catch (Bureaucrat::GradeTooHighException &e)
-//     {
-//         // handle exception
-//     }
-//     return 0;
-// }
+#include "form.hpp"
+
 int main()
 {
     try
     {
-        Bureaucrat b(146,"john");
-
-        std::cout << b.getName() << std::endl;
-        std::cout << b.getGrade() << std::endl;
-       
-        Bureaucrat c;
-        c = b;
-
-        std::cout << c.getName() << std::endl;
-        std::cout << c.getGrade() << std::endl;
-        std::cout << b.getGrade() << '\n';
+        Form f("form", 150, 150);
+        Bureaucrat b(11, "bureaucrat");
         std::cout << b;
+        b.signForm(f);
+        f.beSigned(b);
     }
-    catch(std::exception &e)
+    catch(std::exception & e)
     {
         std::cerr << e.what() << '\n';
     }

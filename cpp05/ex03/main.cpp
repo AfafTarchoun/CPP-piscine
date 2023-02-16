@@ -11,38 +11,30 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// int main()
-// {
-//     try {
-//         Bureaucrat b("John", 0);
-//     }
-//     catch (Bureaucrat::GradeTooHighException &e)
-//     {
-//         // handle exception
-//     }
-//     return 0;
-// }
+#include "form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "intern.hpp"
+
 int main()
 {
+    Intern someRandomIntern;
+
+    Form* rrf;
     try
     {
-        Bureaucrat b(146,"john");
-
-        std::cout << b.getName() << std::endl;
-        std::cout << b.getGrade() << std::endl;
-       
-        Bureaucrat c;
-        c = b;
-
-        std::cout << c.getName() << std::endl;
-        std::cout << c.getGrade() << std::endl;
-        std::cout << b.getGrade() << '\n';
-        std::cout << b;
+        rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
     }
-    catch(std::exception &e)
+    catch(std::exception & e)
     {
-        std::cerr << e.what() << '\n';
+
+        std::cerr << e.what() << std::endl;
     }
-    
+    // catch (std::string error_msg)
+    // {
+    //     std::cerr << error_msg << std::endl;
+    // }
+    // system("Leaks coffee_making");
     return 0;
 }
