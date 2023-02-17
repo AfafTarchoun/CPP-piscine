@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 18:18:45 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/16 18:18:45 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef SHRUBERRYCREATIONFORM_HPP
 # define SHRUBERRYCREATIONFORM_HPP
-#include "form.hpp"
+#include "Aform.hpp"
 #include "Bureaucrat.hpp"
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
     private :
         std::string target;

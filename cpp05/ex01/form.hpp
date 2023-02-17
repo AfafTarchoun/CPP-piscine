@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 17:53:58 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/16 23:05:57 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FORM_HPP
 #define FORM_HPP
 #include <iostream>
@@ -19,8 +31,9 @@ class Form
         Form & operator=(Form const & other);
         ~Form();
         std::string getName();
-        int getGradeToSign();
-        int getGradeToExecute();
+        bool getSigned();
+        int  getGradeToSign() ;
+        int  getGradeToExecute();
         void beSigned(Bureaucrat b);
         class   GradeTooHighException : public std::exception
         {
@@ -39,5 +52,5 @@ class Form
             }
         };
 };
-
+std::ostream& operator<<(std::ostream& os, Form &form);
 #endif

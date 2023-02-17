@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 21:45:19 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/16 21:45:19 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef INTERN_HPP
 #define INTERN_HPP
 
-#include "Form.hpp"
+#include "Aform.hpp"
 
 class Intern
 {
     public:
         Intern();
-        Intern(Intern const & I);
+        Intern(Intern const & Intern);
         ~Intern();
-        
-        
-        Form *makeForm(std::string nameForm, std::string target);
+        AForm *makeForm(std::string nameForm, std::string target);
         class errorForm : public std::exception
         {
             public:

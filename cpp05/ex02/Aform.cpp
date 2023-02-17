@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form.cpp                                           :+:      :+:    :+:   */
+/*   Aform.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:29 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/27 21:40:31 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/16 22:48:22 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "form.hpp"
+#include "Aform.hpp"
 
-Form::Form() : name("john"), is_signed(false), grade_to_sign(149), grade_to_execute(2)
+AForm::AForm() : name("john"), is_signed(false), grade_to_sign(149), grade_to_execute(2)
 {
-    std::cout << "Form Default constructor Called\n";
+    std::cout << "Form Default constructor"<< std::endl;
 }
 
-Form::Form(std::string name, const int grade_to_sign, const int grade_to_execute): name(name), grade_to_sign(grade_to_sign), grade_to_execute(grade_to_execute)
+AForm::AForm(std::string name, const int grade_to_sign, const int grade_to_execute): name(name), grade_to_sign(grade_to_sign), grade_to_execute(grade_to_execute)
 {
     this->is_signed = false;
-    std::cout << "Form Paramitrized Constructor Called\n";
+    std::cout << "Form Paramitrized Constructor"<< std::endl;
 }
 
-Form::Form(Form & other) : name(other.name), is_signed(other.is_signed), grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute)
+AForm::AForm(AForm & other) : name(other.name), is_signed(other.is_signed), grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute)
 {
     *this = other;
-    std::cout << "Form Copy Constructor Called\n";
+    std::cout << "Form Copy Constructor"<< std::endl;
 }
 
 
-Form & Form::operator=(Form const & other)
+AForm & AForm::operator=(AForm const & other)
 {
-    std::cout << "Form Copy Assignment Overload Called\n";
+    std::cout << "Form Copy Assignment Overload"<< std::endl;
     this->is_signed = other.is_signed;
     return *this;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-    std::cout << "Form Distructor Called\n";
+    std::cout << "Form Destructor" << std::endl;
 }
 
-void    Form::beSigned(Bureaucrat B)
+void    AForm::beSigned(Bureaucrat B)
 {
     if(grade_to_sign < 1 || grade_to_execute < 1)
         throw(GradeTooHighException());
@@ -56,29 +56,29 @@ void    Form::beSigned(Bureaucrat B)
     this->is_signed = true;
 }
 
-int Form::getGradeToExecute(void)
+int AForm::getGradeToExecute(void)
 {
     return (this->grade_to_execute);
 }
 
-int Form::getGradeToSign(void)
+int AForm::getGradeToSign(void)
 {
     return (this->grade_to_sign);
 }
 
-std::string Form::getName(void)
+std::string AForm::getName(void)
 {
     return (this->name);
 }
 
-void    Form::execute(Bureaucrat const & executor) const 
+void    AForm::execute(Bureaucrat const & executor) const 
 {
     if(executor.getGrade() < 1)
         throw(GradeTooHighException());
     else if(executor.getGrade() > 150)
         throw(GradeTooLowException());
     if (is_signed)
-        std::cout << "Form : " << this->name << " executed " << executor.getName() << '\n';
+        std::cout << "Form : " << this->name << " executed " << executor.getName() << std::endl;
     else
-        std::cout << "Form : The form is not signed\n";
+        std::cout << "Form : The form is not signed"<< std::endl;
 }

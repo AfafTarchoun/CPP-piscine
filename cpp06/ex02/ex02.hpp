@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ex02.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 21:40:24 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/16 17:59:24 by atarchou         ###   ########.fr       */
+/*   Created: 2023/02/17 03:48:15 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/17 03:49:41 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "form.hpp"
+class Base {
+public:
+    virtual ~Base() {}
+};
 
-int main()
-{
-    try
-    {
-        Form f("form", 150, 150);
-        Bureaucrat b(150, "bureaucrat");
-        std::cout << b;
-        b.signForm(f);
-        f.beSigned(b);
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base* generate() {
+    int r = rand() % 3;
+    if (r == 0) {
+        return new A;
+    } else if (r == 1) {
+        return new B;
+    } else {
+        return new C;
     }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    return 0;
 }

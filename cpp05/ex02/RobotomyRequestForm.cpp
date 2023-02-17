@@ -1,57 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 18:11:42 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/16 23:10:17 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "form.hpp"
+#include "Aform.hpp"
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : target("Target")
 {
-    // int random = time(NULL) % 2;
-    // std::cout << random << std::endl;
-    std::cout << "RobotomyRequestForm Default Constructor Called\n";
-    if(this->getSGrade() > 72 || this->getEGrade() > 45)
-        throw(GradeTooLowException());
-    std::cout << getTarget() << this->target << " has been robotomized successfully 50 percent the time.\n";
     int random;
-    srand(time(NULL));
-    random = rand() % 100;
-    if(random > 50)
-        std::cout << this->target << " has been robotomized successfully 50 percent the time.\n";
-    else
-        std::cout << getTarget() << this->target << " the robotomy failed.\n";
-}
-RobotomyRequestForm::RobotomyRequestForm(std::string name, const int sign_grade, const int execute_grade) : Form(name, sign_grade, execute_grade)
-{
-    target = "EEEEE";
 
-    std::cout << "RobotomyRequestForm Paramitrized Constructor Called\n";
-    if(this->getSGrade() > 72 || this->getEGrade() > 45)
+    std::cout << "RobotomyRequestForm Default Constructor"<<std::endl;
+    if(this->getGradeToSign() > 72 || this->getGradeToExecute() > 45)
         throw(GradeTooLowException());
-    int random;
+    std::cout << getTarget() << this->target << " has been robotomized successfully 50 percent the time."<<std::endl;
     srand(time(NULL));
     random = rand() % 100;
     if(random > 50)
-        std::cout << this->target << " has been robotomized successfully 50 percent the time.\n";
+        std::cout << this->target << " has been robotomized successfully 50 percent the time."<<std::endl;
     else
-        std::cout << getTarget() << this->target << " the robotomy failed.\n";
+        std::cout << getTarget() << this->target << " the robotomy failed"<<std::endl;
+}
+RobotomyRequestForm::RobotomyRequestForm(std::string name, const int sign_grade, const int execute_grade) : AForm(name, sign_grade, execute_grade)
+{
+    int random;
+    
+    target = "request";
+    std::cout << "RobotomyRequestForm Paramitrized Constructor"<<std::endl;
+    if(this->getGradeToSign() > 72 || this->getGradeToExecute() > 45)
+        throw(GradeTooLowException());
+    srand(time(NULL));
+    random = rand() % 100;
+    if(random > 50)
+        std::cout << this->target << " has been robotomized successfully 50 percent the time."<<std::endl;
+    else
+        std::cout << getTarget() << this->target << " the robotomy failed."<<std::endl;
 
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : target(target)
 {
-    if(this->getSGrade() > 72 || this->getEGrade() > 45)
-        throw(GradeTooLowException());
     int random;
+    
+    if(this->getGradeToSign() > 72 || this->getGradeToExecute() > 45)
+        throw(GradeTooLowException());
     srand(time(NULL));
     random = rand() % 100;
     if(random > 50)
-        std::cout << this->target << " has been robotomized successfully 50 percent the time.\n";
+        std::cout << this->target << " has been robotomized successfully 50 percent the time."<<std::endl;
     else
-        std::cout << getTarget() << this->target << " the robotomy failed.\n";
+        std::cout << getTarget() << this->target << " the robotomy failed."<<std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    std::cout << "RobotomyRequestForm Deastuctor Called\n";
+    std::cout << "RobotomyRequestForm Deastuctor"<<std::endl;
 }
 
 void    RobotomyRequestForm::setTarget(std::string T)
