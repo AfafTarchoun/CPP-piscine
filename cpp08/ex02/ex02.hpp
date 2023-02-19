@@ -11,18 +11,21 @@
 /* ************************************************************************** */
 
 
-#ifndef EX02_HPP
-#define EX02_HPP
-
-#include <iostream>
-
-class Base {
-public:
-    virtual ~Base() {}
+template <class T >
+class MutantStack : public std::stack<T>
+{
+    public:
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        iterator begin()
+        {
+            return std::stack<T>::c.begin();
+        }
+        iterator end()
+        {
+            return std::stack<T>::c.end();
+        }
+        MutantStack();
+        MutantStack(const MutantStack &obj);
+        MutantStack &operator=(const MutantStack &a);
+        ~MutantStack();
 };
-
-class A : public Base {};
-class B : public Base {};
-class C : public Base {};
-
-#endif
