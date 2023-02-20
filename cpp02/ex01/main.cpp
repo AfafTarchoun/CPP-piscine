@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 00:21:59 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:16:37 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:42:39 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,3 @@ int main( void )
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
     return 0;
 }
-
-/*In this example, the constructors that take an integer or a floating-point number as a parameter convert the value
-to the corresponding fixed-point representation by left-shifting the integer value
-or multiplying the floating-point value by 1 << _fractionalBits respectively.
-The toFloat() member function converts the fixed-point value back to a floating-point value by dividing by 1 << _fractionalBits,
-and the toInt() member function converts the fixed-point value to an integer by right-shifting _fractionalBits places.
-The operator<< overloads the insertion operator allowing us to print the float value of the fixed point number.
-Also, It is worth noting that this class does not handle the rounding or overflow errors that might occur during operations or conversions.*/

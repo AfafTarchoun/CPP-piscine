@@ -6,14 +6,13 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:13:11 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:17:19 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/08 07:56:47 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Fixed.hpp"
 
-Fixed::Fixed() : _rawValue(0)
+Fixed::Fixed() : _fixed(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -21,12 +20,12 @@ Fixed::Fixed() : _rawValue(0)
 Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called" << std::endl;
-    this->_rawValue = (value << this->_fractionalBits);
+    this->_fixed = (value << this->i);
 }
 
 Fixed::Fixed(const float value) {
     std::cout << "Float constructor called" << std::endl;
-    this->_rawValue = roundf(value * (1 << this->_fractionalBits));
+    this->_fixed = roundf(value * (1 << this->i));
 }
 
 Fixed::Fixed(const Fixed &other) {
@@ -42,31 +41,19 @@ Fixed::~Fixed()
 Fixed &Fixed::operator=(const Fixed &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_rawValue = other._rawValue;
+    this->_fixed = other._fixed;
     return *this;
 }
 
 float Fixed::toFloat() const
 {
-    return ((float)_rawValue) / (1 << this->_fractionalBits);
+    return ((float)_fixed) / (1 << this->i);
 }
 
 int Fixed::toInt() const
 {
-    return _rawValue >> this->_fractionalBits;
+    return _fixed >> this->i;
 }
-
-// int Fixed::getRawBits() const
-// {
-//     std::cout << "getRawBits member function called" << std::endl;
-//     return _rawValue;
-// }
-
-// void Fixed::setRawBits(int const raw)
-// {
-//     std::cout << "setRawBits member function called" << std::endl;
-//     _rawValue = raw;
-// }
 
 std::ostream &operator<<(std::ostream &op, const Fixed &f)
 {

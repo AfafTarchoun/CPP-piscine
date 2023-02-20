@@ -1,5 +1,5 @@
-NAME = Bureaucrat
-SRCS = Bureaucrat.cpp main.cpp 
+NAME = Identify
+SRCS = Identify.cpp main.cpp 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 

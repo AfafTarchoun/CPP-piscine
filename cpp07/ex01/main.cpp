@@ -6,38 +6,26 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:22 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/27 21:41:23 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:13:16 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "iter.hpp"
 
-#include <iostream>
-
-template <typename T>
-void iter(T* arr, int len, void (*func)(T)) {
-    for (int i = 0; i < len; i++) {
-        func(arr[i]);
-    }
-}
-
-void printInt(int x) {
+template<typename T>
+void printT(T x)
+{
     std::cout << x << " ";
 }
 
-void printString(std::string x) {
-    std::cout << x << " ";
-}
-
-int main() {
+int main()
+{
     int intArr[] = {1, 2, 3, 4, 5};
     std::string stringArr[] = {"Hello", "World", "!"};
 
-    iter(intArr, 5, printInt);
+    iter(intArr, 5, printT);
     std::cout << std::endl;
-    iter(stringArr, 3, printString);
-
+    iter(stringArr, 3, printT);
+    std::cout << std::endl;
     return 0;
 }
-/*In this example, the iter function template takes a pointer to an array of type T, the length of the array, and a function pointer that takes a single argument of type T. The function iterates over the array and calls the provided function on each element of the array.
-
-The main function demonstrates how to use the iter function template with both an array of integers and an array of strings, passing the appropriate function for printing each type.*/

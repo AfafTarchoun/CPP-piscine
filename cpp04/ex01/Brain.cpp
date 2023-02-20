@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:28:07 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/13 18:28:08 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:23:58 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ Brain::Brain()
 {
     for(int i = 0; i < 100; i++)
         this->ideas[i] = "ideas";
-    std::cout << "Brain Default Constuctor\n";
+    std::cout << "Brain Default Constuctor" << std::endl;
 }
 
 Brain::Brain(std::string ideas)
 {
     for(int i = 0; i < 100; i++)
         this->ideas[i] = ideas;
-    std::cout << "Brain Paramitrized constructor\n";
+    std::cout << "Brain Paramitrized constructor" << std::endl;
 }
 
 Brain::Brain(Brain & B)
@@ -43,13 +43,13 @@ Brain & Brain::operator=(Brain const & B)
 
 Brain::~Brain()
 {
-    std::cout << "Brain Destructor\n";
+    std::cout << "Brain Destructor" << std::endl;
 }
 
 void    Brain::setIdeas(std::string idea, int n)
 {
 	this->ideas[n] = idea;
-	std::cout << "setIdeas Function Called\n";
+	std::cout << "setIdeas Function Called" << std::endl;
 }
 
 std::string Brain::getIdeas(int n) const 

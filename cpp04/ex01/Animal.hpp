@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:20 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 10:35:57 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:14:19 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Animal
         Animal(std::string _type);
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
-        ~Animal();
-        void makeSound() const;
+        virtual ~Animal();
+        virtual void makeSound() const;
         void    setType(std::string a);
         std::string getType() const;
     protected:
@@ -72,4 +72,14 @@ class WrongAnimal : public Animal
         virtual void makeSound() const;
 };
 
+class WrongCat : public WrongAnimal
+{
+    public:
+        WrongCat();
+        WrongCat(std::string name);
+        WrongCat(const WrongCat& other);
+        WrongCat& operator=(const WrongCat& other);
+        ~WrongCat();
+        void makeSound() const;
+};
 #endif

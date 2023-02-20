@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*   Identify.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 03:47:16 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/17 03:49:28 by atarchou         ###   ########.fr       */
+/*   Created: 2023/02/17 03:48:15 by atarchou          #+#    #+#             */
+/*   Updated: 2023/02/18 19:40:32 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef IDENTIFY_HPP
+#define IDENTIFY_HPP
+#include <iostream>
+#include <cstdlib>
 
-uintptr_t serialize(Data* ptr) {
-    return reinterpret_cast<uintptr_t>(ptr);
-}
+class Base
+{
+    public:
+        virtual ~Base() {}
+};
 
-Data* deserialize(uintptr_t raw) {
-    return reinterpret_cast<Data*>(raw);
-}
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+
+Base* generate();
+void  identify(Base* p);
+void  identify(Base& p);
+#endif

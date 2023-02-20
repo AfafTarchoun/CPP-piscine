@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:13:36 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:34:04 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/08 07:56:47 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Fixed
 {
     private:
-        int _rawValue;
-        static const int _fractionalBits = 8;
+        int _fixed;
+        static const int i = 8;
     public:
         Fixed();
         Fixed(const int value);

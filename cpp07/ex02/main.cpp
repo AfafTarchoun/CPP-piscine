@@ -6,41 +6,60 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:37 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/27 21:41:37 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:17:47 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Array.hpp"
+#include "Array.tpp"
 
-#include "array.hpp"
-
-int main()
+#define MAX_VAL 750
+int main(int, char**)
 {
-    Array<int> a(5);
-    a[0] = 1;
-    a[1] = 2;
-    a[2] = 3;
-    a[3] = 4;
-    a[4] = 5;
-
-    Array<int> b(a);
-
-    for (unsigned int i = 0; i < b.size(); ++i) {
-        std::cout << b[i] << " ";
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
     }
-    std::cout << std::endl;
-
-    Array<int> c;
-    c = a;
-
-    for (unsigned int i = 0; i < c.size(); ++i) {
-        std::cout << c[i] << " ";
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
     }
-    std::cout << std::endl;
+    
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
     return 0;
 }
-/*This is an example of how to use the class and how it should work,
-it creates two arrays a and b and initializes them with the same values,
-then it prints the values of b, it creates another array c and assigns the values of a to it,
-then it prints the values of c.
-The program should output: 1 2 3 4 5 1 2 3 4 5*/

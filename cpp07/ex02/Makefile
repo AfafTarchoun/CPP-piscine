@@ -1,7 +1,7 @@
-NAME = Harl
-SRCS = main.cpp Harl.cpp
+NAME = Array
+SRCS = main.cpp 
 CC = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)

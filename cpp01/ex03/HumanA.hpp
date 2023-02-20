@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 03:39:53 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/24 03:50:06 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/07 05:11:11 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class HumanA
         HumanA(std::string n, Weapon &weapon);
         std::string getName(void);
         void        setName(std::string Name);
-        void attack();
+        void        attack();
 };
 
 #endif

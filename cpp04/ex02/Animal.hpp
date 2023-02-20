@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:20 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/13 18:15:25 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:14:32 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include "Brain.hpp"
 
-abstract class Animal
+class Animal
 {
    public:
         Animal();
@@ -72,4 +72,14 @@ class WrongAnimal : public Animal
         virtual void makeSound() const;
 };
 
+class WrongCat : public WrongAnimal
+{
+    public:
+        WrongCat();
+        WrongCat(std::string name);
+        WrongCat(const WrongCat& other);
+        WrongCat& operator=(const WrongCat& other);
+        ~WrongCat();
+        void makeSound() const;
+};
 #endif

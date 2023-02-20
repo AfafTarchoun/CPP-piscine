@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 03:40:39 by atarchou          #+#    #+#             */
-/*   Updated: 2023/01/24 04:14:11 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/07 05:11:22 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Weapon
     public:
         Weapon();
         Weapon(std::string type);
-        std::string getType();
-        void setType(std::string type);
+        const std::string &getType() const;
+        void     setType(std::string type);
 };
 
 #endif

@@ -6,14 +6,13 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:13:00 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:16:12 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/08 07:56:18 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Fixed.hpp"
 
-Fixed::Fixed() : _rawValue(0)
+Fixed::Fixed() : _fixed(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -32,18 +31,18 @@ Fixed::~Fixed()
 Fixed &Fixed::operator=(const Fixed &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_rawValue = other.getRawBits();
+    this->_fixed = other.getRawBits();
     return (*this);
 }
 
 int Fixed::getRawBits() const
 {
     std::cout << "getRawBits member function called" << std::endl;
-    return (this->_rawValue);
+    return (this->_fixed);
 }
 
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
-    _rawValue = raw;
+    _fixed = raw;
 }

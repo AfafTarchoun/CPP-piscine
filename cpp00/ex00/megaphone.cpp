@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:37:57 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/01 02:58:46 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:10:50 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int main(int argc, char **argv)
         i = 0;
         std::cout << (*argv);
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
     return (0);
 }

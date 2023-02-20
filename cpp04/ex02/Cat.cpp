@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:26:38 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/13 18:42:22 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:32:44 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,36 @@ void    Cat::getIdeas(void)
 {
     for(int i = 0; i < 100; i++)
         std::cout << B->getIdeas(i) << std::endl; 
+}
+//Wrong cat methodes
+
+WrongCat::WrongCat()
+{
+    std::cout << "WrongCat Default constructor Called\n";
+}
+
+WrongCat::WrongCat(std::string name): WrongAnimal(name)
+{
+    std::cout << "Wrong cat parameterized constructor" << std::endl;
+}
+
+WrongCat::WrongCat(const WrongCat& other) :WrongAnimal(other)
+{
+    *this = other;
+}
+
+WrongCat& WrongCat::operator=(const WrongCat& other)
+{
+    this->_type = other._type;
+  return *this;
+}
+
+WrongCat::~WrongCat()
+{
+    std::cout <<"Wrong cat destructor" << std::endl;
+}
+
+void WrongCat::makeSound() const
+{
+    std::cout << "definitely not meaw" << std::endl;
 }

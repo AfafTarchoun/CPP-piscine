@@ -6,10 +6,9 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:13:30 by atarchou          #+#    #+#             */
-/*   Updated: 2023/02/08 07:51:25 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/02/08 07:57:48 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "Fixed.hpp"
 
@@ -20,7 +19,7 @@ std::ostream &operator<<(std::ostream& op, const Fixed& o)
 }
 
 //canonical orthodox form requirements
-Fixed::Fixed() : _rawValue(0)
+Fixed::Fixed() : _fixed(0)
 {
     // std::cout << "Default constructor called" << std::endl;
 }
@@ -28,13 +27,13 @@ Fixed::Fixed() : _rawValue(0)
 Fixed::Fixed(const int value)
 {
     // std::cout << "Int constructor called" << std::endl;
-    this->_rawValue = value << this->_fractionalBits;
+    this->_fixed = value << this->i;
 }
 
 Fixed::Fixed(const float value)
 {
     // std::cout << "Float constructor called" << std::endl;
-    this->_rawValue = roundf(value * (1 << this->_fractionalBits));
+    this->_fixed = roundf(value * (1 << this->i));
 }
 
 Fixed::Fixed(const Fixed &other)
@@ -51,26 +50,25 @@ Fixed::~Fixed()
 //setters and getters
 int Fixed::getRawBits(void) const
 {
-    // std::cout << "getRawBits member function called\n";
-    return (this->_rawValue);
+    return (this->_fixed);
 }
 
 void    Fixed::setRawBits(int const raw)
 {
-    this->_rawValue = raw;
+    this->_fixed = raw;
 }
 
 //operators
 Fixed & Fixed::operator=(const Fixed &other)
 {
     // std::cout << "Copy assignment operator called" << std::endl;
-    this->_rawValue = other._rawValue;
+    this->_fixed = other._fixed;
     return *this;
 }
 
 Fixed Fixed::operator++()
 {
-    _rawValue++;
+    _fixed++;
     return *this;
 }
 
@@ -82,7 +80,7 @@ Fixed Fixed::operator++(int)
 }
 Fixed Fixed::operator--()
 {
-    _rawValue--;
+    _fixed--;
     return *this;
 }
 
@@ -125,7 +123,6 @@ Fixed Fixed::operator/(Fixed const &other) const
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
-	// std::cout << "Multiplication operator called" << std::endl;
 	return Fixed(this->toFloat() * other.toFloat());
 }
 
@@ -147,12 +144,12 @@ bool   Fixed::operator>(Fixed const &other) const
 //to int and to float functions
 float Fixed::toFloat(void) const
 {
-    return ((float) this->_rawValue / (1 << this->_fractionalBits));
+    return ((float) this->_fixed / (1 << this->i));
 }
 
 int Fixed::toInt(void) const
 {
-    return (this->_rawValue << this->_fractionalBits);
+    return (this->_fixed << this->i);
 }
 
 //min max functions

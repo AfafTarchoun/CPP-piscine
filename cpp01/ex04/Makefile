@@ -1,6 +1,6 @@
 NAME = Sed
 SRCS = main.cpp 
-CC = c++
+CC = c++ 
 FLAGS = -Wall -Werror -Wextra
 
 $(NAME) :

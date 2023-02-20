@@ -1,11 +1,11 @@
-NAME = Weapon
-SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+NAME = easy_find
+SRCS = main.cpp
 CC = c++
-FLAGS = -Wall -Werror -Wextra 
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
-	@echo "$(green)source files compiled successfully$(reset)"
+	@echo "source files compiled successfully"
 
 all : $(NAME)
 
