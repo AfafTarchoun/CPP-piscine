@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <limits>
 
 // Define a struct to hold the bitcoin values for a particular date.
 struct BitcoinValue
@@ -23,12 +24,24 @@ int main(int argc, char** argv)
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
-
+    std::string first_line;
+    std::getline(input_file, first_line);
+   bool has_header = false;
+    if (first_line.find("|") != std::string::npos || first_line.find(",") != std::string::npos)
+    {
+        has_header = true;
+    }
+    else
+    {
+        // If the first line doesn't contain a header, reset the file stream to the beginning of the file.
+        std::cerr<<"wrong header line\n";
+    }
     // Read the bitcoin values from the input file into a map.
     std::map<std::string, BitcoinValue> bitcoin_values;
     std::string line;
     while (std::getline(input_file, line))
     {
+    
         std::stringstream line_stream(line);
         std::string date_string, value_string, delimiter;
         std::getline(line_stream, date_string, ' ');
@@ -43,12 +56,12 @@ int main(int argc, char** argv)
         if (date_stream.fail() || dash1 != '-' || dash2 != '-')
         {
             std::cerr << "Error: bad input => " << date_string << std::endl;
-            continue;
+            break;
         }
         if (month < 1 || month > 12 || day < 1 || day > 31)
         {
             std::cerr << "Error: bad input => " << date_string << std::endl;
-            continue;
+            break;
         }
 
         std::stringstream value_stream(value_string);
@@ -57,7 +70,7 @@ int main(int argc, char** argv)
         if (value_stream.fail() || value < 0 || value > 1000)
         {
             std::cerr << "Error: not a positive number." << std::endl;
-            continue;
+            break;
         }
 
         // Add the bitcoin value to the map.
@@ -82,23 +95,24 @@ int main(int argc, char** argv)
         if (exchange_rate_stream.fail() || exchange_rate < 0 || exchange_rate > 1000)
         {
             std::cerr << "Error: not a positive number." << std::endl;
-            continue;
+            break;
         }
 
         std::string date_key = date_string.substr(0, 10);
         if (bitcoin_values.count(date_key) == 0)
         {
             std::cerr <<"Error: no bitcoin value found for date " << date_key << std::endl;
-            continue;
+            break;
         }
         double bitcoin_value = bitcoin_values[date_key].value;
         double exchange_value = bitcoin_value * exchange_rate;
         if (exchange_value > std::numeric_limits<int>::max())
         {
             std::cerr << "Error: too large a number." << std::endl;
-            continue;
+            break;
         }
         std::cout << bitcoin_values[date_key].date << " => " << bitcoin_value << " = " << exchange_value << std::endl;
     }
+    input_file.close();
     return 0;
 }

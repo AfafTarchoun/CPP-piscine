@@ -15,14 +15,19 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
+#include <map>
 
-struct Price
+class btc
 {
-	std::string	date;
-	double		value;
-};
+	private:
+		std::map<std::string float> data;
+		int valid_date(std::string date);
+		int valid_val(std::string value);
 
-std::vector<Price>	read_prices_from_file(const std::string& filename);
-std::vector<Price>	read_input_prices_from_stdin();
-void				evaluate_input_prices(const std::vector<Price>& input_prices, const std::vector<Price>& prices);
+	public:
+		btc();
+		btc(btc const &other);
+		btc const &operator=(btc const &other);
+		~btc();
+
+};

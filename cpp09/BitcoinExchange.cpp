@@ -10,84 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+// #include "BitcoinExchange.hpp"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <map>
+#include <string>
 
-// Read bitcoin prices from a CSV file and return as a vector of prices
-std::vector<Price> read_prices_from_file(const std::string& filename)
+void read_file_and_fill_map(std::string filename, std::map<std::string, double>& data_map)
 {
-    std::vector<Price> prices;
-    std::ifstream prices_file(filename.c_str());
-    if (!prices_file)
-    {
-        std::cerr << "Error: could not open file " << filename << "\n";
-        return prices;
-    }
+    std::ifstream infile(filename.c_str());
     std::string line;
-    while (std::getline(prices_file, line))
+    while (std::getline(infile, line))
     {
-        std::istringstream ss(line);
+        std::istringstream iss(line);
         std::string date_str;
         double value;
-        if (std::getline(ss, date_str, ',') && ss >> value)
-        {
-            Price price = {date_str, value};
-            prices.push_back(price);
-        }
+        std::string year_str, month_str, day_str;
+        if (std::sscanf(date_str.c_str(), "%4s-%2s-%2s", &year_str[0], &month_str[0], &day_str[0]) != 3)
+            // continue; // Skip invalid date format
+            std::cout << "invalide date format\n";
+        int year = atoi(year_str.c_str());
+        int month = atoi(month_str.c_str());
+        int day = atoi(day_str.c_str());
+        if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31 || value < 0 || value > 1000)
+            // continue; // Skip invalid values
+            std::cout << "invalid values\n";
+        std::ostringstream date_ss;
+        date_ss << year << "-" << month << "-" << day;
+        std::string date = date_ss.str();
+        // if (data_map.count(date))
+        //     data_map[date] += value; // Aggregate values for existing dates
+        data_map[date] = value; // Insert new date with value
     }
-    return prices;
 }
 
-
-// Read dates and values to evaluate from standard input and return as a vector of prices
-std::vector<Price> read_input_prices_from_stdin()
+int main(int ac, char *av[])
 {
-    std::vector<Price> input_prices;
-    std::string line;
-    while (std::getline(std::cin, line)) {
-        std::istringstream ss(line);
-        std::string date_str;
-        double value;
-        if (std::getline(ss, date_str, '|') && ss >> value)
-        {
-            Price input_price = {date_str, value};
-            input_prices.push_back(input_price);
-        }
-        else
-        {
-            std::cerr << "Error: bad input => " << line << "\n";
-        }
-    }
-    return input_prices;
-}
-
-// Look up bitcoin prices for each input date and output result
-void evaluate_input_prices(const std::vector<Price>& input_prices, const std::vector<Price>& prices)
-{
-    for (std::vector<Price>::const_iterator input_price_it = input_prices.begin(); input_price_it != input_prices.end(); ++input_price_it)
+    std::map<std::string, double> data_map;
+    read_file_and_fill_map(av[1], data_map);
+    for (std::map<std::string, double>::iterator it = data_map.begin(); it != data_map.end(); ++it)
     {
-        double exchange_rate = -1;
-        for (std::vector<Price>::const_iterator price_it = prices.begin(); price_it != prices.end(); ++price_it) {
-            if (price_it->date == input_price_it->date)
-            {
-                exchange_rate = price_it->value;
-                break;
-            }
-        }
-        if (exchange_rate < 0)
-        {
-            std::cerr << "Error: no bitcoin price found for date " << input_price_it->date << "\n";
-        }
-        else if (input_price_it->value < 0)
-        {
-            std::cerr << "Error: not a positive number.\n";
-        }
-        else if (input_price_it->value > 1000)
-        {
-            std::cerr << "Error: too large a number.\n";
-        }
-        else
-        {
-            std::cout << input_price_it->date << " => " << input_price_it->value << " = " << input_price_it->value * exchange_rate << "\n";
-        }
+        std::cout << it->first << "\t" << it->second << std::endl;
     }
+    return 0;
 }
