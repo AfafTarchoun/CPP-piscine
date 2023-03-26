@@ -14,7 +14,8 @@ bool isNumber(const std::string& token) {
 }
 
 double performOperation(double op1, double op2, char op) {
-    switch(op) {
+    switch(op)
+    {
         case '+': return op1 + op2;
         case '-': return op1 - op2;
         case '*': return op1 * op2;
@@ -23,7 +24,8 @@ double performOperation(double op1, double op2, char op) {
     return 0;
 }
 
-double evaluateRPN(const std::string& expression) {
+double evaluateRPN(const std::string& expression)
+{
     std::stack<double> st;
 
     std::istringstream iss(expression);
@@ -32,7 +34,8 @@ double evaluateRPN(const std::string& expression) {
         if(isNumber(token)) {
             st.push(std::stod(token));
         } else if(isOperator(token)) {
-            if(st.size() < 2) {
+            if(st.size() < 2)
+            {
                 std::cout << "Error: not enough operands for " << token << " operator." << std::endl;
                 return 0;
             }
