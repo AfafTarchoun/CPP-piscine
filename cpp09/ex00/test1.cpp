@@ -1,76 +1,65 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <map>
-#include <iomanip>
 
 int main(int argc, char* argv[]) {
+    // Check if file argument is provided
     if (argc < 2) {
-        std::cerr << "Error: file argument missing." << std::endl;
+        std::cerr << "Error: no file provided." << std::endl;
         return 1;
     }
 
-    // Open the CSV file containing the bitcoin price history
-    std::ifstream csv(argv[1]);
-    if (!csv.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
+    // Open bitcoin price database
+    std::ifstream btc_file("btc.csv");
+    if (!btc_file.is_open()) {
+        std::cerr << "Error: could not open bitcoin price database." << std::endl;
         return 1;
     }
 
-    // Read the CSV file into a map, where the key is the date and the value is the bitcoin price
-    std::map<std::string, float> bitcoin_prices;
+    // Parse bitcoin price database and store in map
+    std::map<std::string, double> btc_map;
     std::string line;
-    while (std::getline(csv, line)) {
+    std::getline(btc_file, line); // Skip header line
+    while (std::getline(btc_file, line)) {
         std::stringstream ss(line);
         std::string date_str;
-        std::string price_str;
-        std::getline(ss, date_str, '|');
-        std::getline(ss, price_str);
-        if (!price_str.empty()) {
-            try {
-                float price = std::stof(price_str);
-                bitcoin_prices[date_str] = price;
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Error: not a valid price." << std::endl;
-            }
-            catch (const std::out_of_range& e)
-            {
-                std::cerr << "Error: price out of range." << std::endl;
-            }
-        }
+        std::getline(ss, date_str, ',');
+        double price;
+        ss >> price;
+        btc_map[date_str] = price;
     }
 
-    // Process each line of the input file
-    std::ifstream input(argv[1]);
-    while (std::getline(input, line)) {
+    // Open input file and process each line
+    std::ifstream input_file(argv[1]);
+    if (!input_file.is_open()) {
+        std::cerr << "Error: could not open input file." << std::endl;
+        return 1;
+    }
+    while (std::getline(input_file, line)) {
         std::stringstream ss(line);
         std::string date_str;
-        std::string value_str;
+        double value;
         std::getline(ss, date_str, '|');
-        std::getline(ss, value_str);
-        if (!value_str.empty()) {
-            try {
-                float value = std::stof(value_str);
-                std::map<std::string, float>::iterator it = bitcoin_prices.find(date_str);
-                if (it != bitcoin_prices.end()) {
-                    float rate = it->second / 1000.0f;
-                    std::cout << date_str << " => " << std::fixed << std::setprecision(2) << value << " = " << rate * value << std::endl;
-                }
-                else {
-                    std::cerr << "Error: no bitcoin price found for date " << date_str << std::endl;
-                }
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Error: not a valid number." << std::endl;
-            }
-            catch (const std::out_of_range& e)
-            {
-                std::cerr << "Error: number out of range." << std::endl;
-            }
+        ss >> value;
+        if (ss.fail() || value <= 0 || value > 1000) {
+            std::cerr << "Error: not a positive number." << std::endl;
+            continue;
         }
+        std::map<std::string, double>::const_iterator iter = btc_map.find(date_str);
+        if (iter == btc_map.end())
+        {
+            std::cerr << "Error: no bitcoin price available for date " << date_str << std::endl;
+            continue;
+        }
+        double btc_price = iter->second;
+        double result = value * btc_price;
+        if (result <= 0) {
+            std::cerr << "Error: too large a number." << std::endl;
+            continue;
+        }
+        std::cout << date_str << " => " << value << " = " << result << std::endl;
     }
 
     return 0;
