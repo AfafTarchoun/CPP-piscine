@@ -12,22 +12,26 @@
 
 #pragma once
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <map>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
-class btc
+class BitcoinExchange
 {
-	private:
-		std::map<std::string float> data;
-		int valid_date(std::string date);
-		int valid_val(std::string value);
+private:
+	typedef std::map<std::string, float>	btc;
+	btc	_data;
+	BitcoinExchange(BitcoinExchange const &);
+	BitcoinExchange		&operator=(BitcoinExchange const &);
 
-	public:
-		btc();
-		btc(btc const &other);
-		btc const &operator=(btc const &other);
-		~btc();
+	bool	check_line(std::string line);
+	bool	check_date(std::string year, std::string month, std::string day);
+	bool	check_value(std::string value);
 
+public:
+	BitcoinExchange(btc data);
+	~BitcoinExchange();
+
+	void	exchange_res(std::string line);
 };
