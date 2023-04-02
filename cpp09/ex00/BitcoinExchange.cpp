@@ -6,13 +6,13 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 03:57:35 by atarchou          #+#    #+#             */
-/*   Updated: 2023/03/21 07:10:24 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:27:47 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(btc	data)
+BitcoinExchange::BitcoinExchange(btc  data)
 {
 	_data = data;
 }
@@ -84,23 +84,27 @@ void	BitcoinExchange::exchange_res(std::string line)
 	std::string year = line.substr(0, 4);
 	std::string month = line.substr(5, 2);
 	std::string day = line.substr(8, 2);
-	if (!check_date(year, month, day)) {
+	if (!check_date(year, month, day))
+	{
 		std::cout << "Error: bad input => " << line << std::endl;
 		return;
 	}
 	std::string date = line.substr(0, 10);
-	std::string strValue = line.substr(13, line.size() - 13);
-	if (strValue.empty()) {
+	std::string strVal = line.substr(13, line.size() - 13);
+	if (strVal.empty())
+	{
 		std::cout << "Error: bad input => " << line << std::endl;
 		return;
 	}
-	if (!check_value(strValue)) {
+	if (!check_value(strVal))
+	{
 		std::cout << "Error: not a positive number." << std::endl;
 		return;
 	}
 	float value;
-	std::istringstream(strValue) >> value;
-	if (value > 1000) {
+	std::istringstream(strVal) >> value;
+	if (value > 1000)
+	{
 		std::cout << "Error: too large a number." << std::endl;
 		return;
 	}

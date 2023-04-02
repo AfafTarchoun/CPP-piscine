@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/02 02:29:27 by atarchou          #+#    #+#             */
+/*   Updated: 2023/04/02 02:29:34 by atarchou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "RPN.hpp"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     return evaluate_rpn_expression(argc, argv);
 }
