@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 04:02:20 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/02 02:27:42 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:56:56 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,5 @@ class BitcoinExchange
 		~BitcoinExchange();
 		void	exchange_res(std::string line);
 };
+
+std::map<std::string, float>	dataToMap();
