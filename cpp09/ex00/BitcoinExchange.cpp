@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 03:57:35 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/02 23:27:38 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/05 21:32:35 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	BitcoinExchange::exchange_res(std::string line)
 		return;
 	if (!check_line(line))
 	{
-		std::cout << "Error: bad input => " << line << std::endl;
+		std::cerr << "Error: bad input => " << line << std::endl;
 		return ;
 	}
 	std::string	year = line.substr(0, 4);
@@ -87,26 +87,26 @@ void	BitcoinExchange::exchange_res(std::string line)
 	std::string day = line.substr(8, 2);
 	if (!check_date(year, month, day))
 	{
-		std::cout << "Error: bad input => " << line << std::endl;
+		std::cerr << "Error: bad input => " << line << std::endl;
 		return ;
 	}
 	std::string date = line.substr(0, 10);
 	std::string strVal = line.substr(13, line.size() - 13);
 	if (strVal.empty())
 	{
-		std::cout << "Error: bad input => " << line << std::endl;
+		std::cerr << "Error: bad input => " << line << std::endl;
 		return ;
 	}
 	if (!check_value(strVal))
 	{
-		std::cout << "Error: not a positive number." << std::endl;
+		std::cerr << "Error: not a positive number." << std::endl;
 		return ;
 	}
 	float	value;
 	std::istringstream(strVal) >> value;
 	if (value > 1000)
 	{
-		std::cout << "Error: too large a number." << std::endl;
+		std::cerr << "Error: too large a number." << std::endl;
 		return ;
 	}
 	btc::iterator	rate = _data.upper_bound(date);
@@ -123,20 +123,19 @@ std::map<std::string, float>	dataToMap()
 
 	file.open("data.csv", std::ifstream::in);
 	if (file.fail())
-		std::cout << "Error: could not read `data.csv`." << std::endl;
+		std::cerr << "Error: could not read `data.csv`." << std::endl;
 	while (std::getline(file, line))
     {
 		if (line == "date,exchange_rate")
 			continue ;
 		size_t comma = line.find(",");
-		size_t comma2 = line.find(",", comma + 1);
-		if (line.size() < 12 || comma == std::string::npos || comma2 != std::string::npos)
-			std::cout << "Error: invalid `data.csv`." << std::endl;
+		if (line.size() < 12 || comma == std::string::npos)
+			std::cerr << "Error: invalid `data.csv`." << std::endl;
 		std::string key = line.substr(0, comma);
 		std::string value = line.substr(comma + 1, line.size() - comma - 1);
 		std::istringstream(value) >> ret[key];
 	}
 	if (ret.size() == 0)
-		std::cout << "Error: invalid `data.csv`." << std::endl;
+		std::cerr<< "Error: invalid `data.csv`." << std::endl;
 	return (ret);
 }

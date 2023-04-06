@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 02:31:22 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/03 01:44:44 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:33:00 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ std::vector<int> insertion_sort(std::vector<int> arr)
             j--;
         }
     }
-    return arr;
+    return (arr);
 }
 
 std::vector<int> merge(std::vector<int> left, std::vector<int> right)
 {
-    std::vector<int> result;
+    std::vector<int>            result;
     std::vector<int>::size_type i = 0;
     std::vector<int>::size_type j = 0;
 
@@ -57,7 +57,7 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right)
         result.push_back(right[j]);
         j++;
     }
-    return result;
+    return (result);
 }
 
 std::vector<int> merge_insertion_sort(std::vector<int> arr)
@@ -71,7 +71,7 @@ std::vector<int> merge_insertion_sort(std::vector<int> arr)
         std::vector<int> right(arr.begin() + mid, arr.end());
         left = merge_insertion_sort(left);
         right = merge_insertion_sort(right);
-        return merge(left, right);
+        return (merge(left, right));
     }
 }
 
@@ -87,7 +87,7 @@ std::deque<int> insertion_sort(std::deque<int> arr)
             j--;
         }
     }
-    return arr;
+    return (arr);
 }
 
 std::deque<int> merge(std::deque<int> left, std::deque<int> right)
@@ -117,7 +117,7 @@ std::deque<int> merge(std::deque<int> left, std::deque<int> right)
         result.push_back(right.front());
         right.pop_front();
     }
-    return result;
+    return (result);
 }
 
 std::deque<int> merge_insertion_sort(std::deque<int> arr)
@@ -131,20 +131,15 @@ std::deque<int> merge_insertion_sort(std::deque<int> arr)
         std::deque<int> right(arr.begin() + mid, arr.end());
         left = merge_insertion_sort(left);
         right = merge_insertion_sort(right);
-        return merge(left, right);
+        return (merge(left, right));
     }
 }
 
 void sort_and_print(int argc, char* argv[])
 {
-    if(argc < 2)
-    {
-        std::cout << "Error: Please provide a list of positive integers.\n";
-        return;
-    }
-
     std::vector<int>    v;
     std::deque<int>     d;
+
     for(int i = 1; i < argc; ++i)
     {
         int val = std::atoi(argv[i]);
