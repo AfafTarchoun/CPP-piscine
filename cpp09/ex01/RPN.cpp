@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 02:29:38 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/05 21:35:47 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/07 04:54:19 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ std::string add_spaces(const std::string& expression)
 
 int evaluate_rpn_expression(const std::string& expression)
 {
-    std::stack<int> stack;
+    std::stack<double> stack;
 
     for (std::string::size_type i = 0; i < expression.length(); i++)
     {
         if (isdigit(expression[i]))
         {
-            int number = expression[i] - '0';
+            double number = expression[i] - '0';
             stack.push(number);
         }
         else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/')
@@ -42,11 +42,11 @@ int evaluate_rpn_expression(const std::string& expression)
                 std::cerr << "Error: insufficient operands for " << expression[i] << "\n";
                 return (1);
             }
-            int operand2 = stack.top();
+            double operand2 = stack.top();
             stack.pop();
-            int operand1 = stack.top();
+            double operand1 = stack.top();
             stack.pop();
-            int result;
+            double result;
             switch (expression[i])
             {
                 case '+':
@@ -62,9 +62,10 @@ int evaluate_rpn_expression(const std::string& expression)
                     if (operand2 == 0)
                     {
                         std::cerr << "Error: division by zero\n";
-                        return 1;
+                        return (1);
                     }
-                    result = operand1 / operand2;
+                    else
+                        result = operand1 / operand2;
                     break;
             }
             stack.push(result);

@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 03:57:35 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/05 21:32:35 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:28:47 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ bool	BitcoinExchange::check_date(std::string y, std::string m, std::string d)
 
 bool	BitcoinExchange::check_value(std::string value)
 {
-	int dot = 0;
+	int point = 0;
 
 	for (size_t i = 0; i < value.size(); i++)
 	{
 		if (!std::isdigit(value[i]) && value[i] != '.')
 			return (false);
 		if (value[i] == '.')
-			dot++;
-		if (dot > 1)
+			point++;
+		if (point > 1)
 			return (false);
 	}
 	return (true);
@@ -115,7 +115,7 @@ void	BitcoinExchange::exchange_res(std::string line)
 	std::cout << date << " => " << value << " = " << rate->second * value << std::endl;
 }
 
-std::map<std::string, float>	dataToMap()
+std::map<std::string, float>	map_data()
 {
 	std::map<std::string, float>	ret;
 	std::ifstream					file;

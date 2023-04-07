@@ -6,7 +6,7 @@
 /*   By: atarchou <atarchou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 03:57:39 by atarchou          #+#    #+#             */
-/*   Updated: 2023/04/05 21:32:47 by atarchou         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:28:37 by atarchou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main (int argc, char **argv)
 		std::cerr << "Error: could not read input file." << std::endl;
 		return (1);
 	}
-	std::map<std::string, float> data = dataToMap();
+	std::map<std::string, float> data = map_data();
 	// output(data);
 	BitcoinExchange bit(data);
 	while (std::getline(input, line))
